@@ -76,11 +76,15 @@ public class CanvasButtons : MonoBehaviour
             payOrnNotEnough.color = Color.red;
         }
     }
-    /*public void continuePlay2()
+    //New continue for rewarded----------------------------------------------------------------------------------------------------------------------------------------------------------
+    public void continuePlay2()
     {
+        
+        Time.timeScale = 0;
+        
         PlayerPrefs.SetInt("Score", GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().score);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }*/
+        
+    }
 
     public void Restart()
     {

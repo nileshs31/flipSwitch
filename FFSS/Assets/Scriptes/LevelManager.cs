@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -83,14 +84,16 @@ public class LevelManager : MonoBehaviour
     {
         //StartCoroutine(TimeScaleDead());
         Time.timeScale = 0;
-        
+
         if (PlayerPrefs.GetInt("HighScore", 0) <= score)
             PlayerPrefs.SetInt("HighScore", score);
         highScore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
         GameOverScreen.SetActive(true);
         gOCoins.text = "Coins: " + PlayerPrefs.GetInt("NumOfCoins", 0);
+        
 
     }
+
     
 
     public void AddCoin()

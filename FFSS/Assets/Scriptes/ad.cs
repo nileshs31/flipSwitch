@@ -18,6 +18,7 @@ public class ad : MonoBehaviour
     string Video_Ad_ID = "ca-app-pub-3940256099942544/5224354917";
 
     private BannerView bannerView;
+    private BannerView bannerView1;
     private InterstitialAd interstitial;
     private RewardedAd rewardedAd;
 
@@ -30,14 +31,17 @@ public class ad : MonoBehaviour
         this.RequestBanner();
         this.RequestInterstitial();
         this.RequestRewardBasedVideo();
+        this.RequestBanner1();
     }
     public void RequestBanner()
     {
         AdSize adSize = new AdSize(250, 250);
         
-        // Create a 320x50 banner at the top of the screen.
-        this.bannerView = new BannerView(Banner_Ad_ID, AdSize.Banner, AdPosition.Bottom);
-
+        
+            // Create a 320x50 banner at the top of the screen.
+            this.bannerView = new BannerView(Banner_Ad_ID, AdSize.Banner, AdPosition.Bottom);
+         
+        
         // Called when an ad request has successfully loaded.
         this.bannerView.OnAdLoaded += this.HandleOnAdLoaded;
         // Called when an ad request failed to load.
@@ -54,7 +58,37 @@ public class ad : MonoBehaviour
 
         // Load the banner with the request.
         this.bannerView.LoadAd(request);
+
     }
+    public void RequestBanner1()
+    {
+        AdSize adSize = new AdSize(250, 250);
+
+
+        // Create a 320x50 banner at the top of the screen.
+        this.bannerView1 = new BannerView(Banner_Ad_ID, AdSize.Banner, AdPosition.Top);
+
+
+        // Called when an ad request has successfully loaded.
+        this.bannerView1.OnAdLoaded += this.HandleOnAdLoaded;
+        // Called when an ad request failed to load.
+        this.bannerView1.OnAdFailedToLoad += this.HandleOnAdFailedToLoad;
+        // Called when an ad is clicked.
+        this.bannerView1.OnAdOpening += this.HandleOnAdOpened;
+        // Called when the user returned from the app after an ad click.
+        this.bannerView1.OnAdClosed += this.HandleOnAdClosed;
+        // Called when the ad click caused the user to leave the application.
+        //this.bannerView.OnAdLeavingApplication += this.HandleOnAdLeavingApplication;
+
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+
+        // Load the banner with the request.
+        this.bannerView1.LoadAd(request);
+
+    }
+
+
     /*public void ShowBannerAd()
     {
         // Create an empty ad request.
@@ -179,7 +213,7 @@ public class ad : MonoBehaviour
     {
         MonoBehaviour.print(
             "HandleRewardedAdFailedToShow event received with message: "
-                             + args.Message);
+                             );
     }
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
