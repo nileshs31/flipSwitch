@@ -151,8 +151,10 @@ public class ad : MonoBehaviour
         // Called when the user should be rewarded for interacting with the ad.
         this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         // Called when the ad is closed.
+        this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+ 
 
-      
+
     }
 
     public void ShowVideoBasedRewarded()
@@ -160,7 +162,9 @@ public class ad : MonoBehaviour
         if (this.rewardedAd.IsLoaded())
         {
             this.rewardedAd.Show();
+            
         }
+ 
     }
 
 
@@ -192,6 +196,12 @@ public class ad : MonoBehaviour
      }
 
 
+
+
+
+
+
+
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleRewardedAdLoaded event received");
@@ -219,6 +229,8 @@ public class ad : MonoBehaviour
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleRewardedAdClosed event received");
+          
+
     }
 
     public void HandleUserEarnedReward(object sender, Reward args)

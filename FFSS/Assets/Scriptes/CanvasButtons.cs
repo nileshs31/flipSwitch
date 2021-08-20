@@ -10,7 +10,9 @@ public class CanvasButtons : MonoBehaviour
     public GameObject VolumeOffButton;
     public GameObject VolumeOnButton;
     public GameObject pauseGameScreen;
+    public GameObject ThankingScreen;
     public Text payOrnNotEnough;
+    public GameObject GameOverScreen;
 
     void Start()
     {
@@ -76,14 +78,22 @@ public class CanvasButtons : MonoBehaviour
             payOrnNotEnough.color = Color.red;
         }
     }
+    public void Removee()
+    {
+        GameOverScreen.SetActive(false);
+        ThankingScreen.SetActive(true);
+        Time.timeScale = 0;
+
+    }
     //New continue for rewarded----------------------------------------------------------------------------------------------------------------------------------------------------------
     public void continuePlay2()
     {
-        
-        Time.timeScale = 0;
-        
+
+        ThankingScreen.SetActive(false);
         PlayerPrefs.SetInt("Score", GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().score);
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+
     }
 
     public void Restart()
@@ -99,5 +109,11 @@ public class CanvasButtons : MonoBehaviour
         PlayerPrefs.SetInt("Score", 0);
         SceneManager.LoadScene("HomeScreen");
     }
-
+    public void Update()
+    {
+        if(ThankingScreen.activeInHierarchy)
+        {
+            Time.timeScale = 0;
+        }
+    }
 }
