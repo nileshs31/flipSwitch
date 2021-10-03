@@ -6354,6 +6354,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand
       objectReference: {fileID: 0}
+    - target: {fileID: 643186948974500143, guid: f2532445cddf8c04fb62434b38c5f991,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 643186949546047128, guid: f2532445cddf8c04fb62434b38c5f991,
         type: 3}
       propertyPath: m_AnchoredPosition.x
