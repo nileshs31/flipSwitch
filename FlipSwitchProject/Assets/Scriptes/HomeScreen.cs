@@ -8,19 +8,19 @@ public class HomeScreen : MonoBehaviour
 {
     public Text HighScore;
     public GameObject SureScreen;
-    AdController adcon;
+    //AdController adcon;
     bool firstTime;
     public int i;
 
     private void Awake()
     {
-       adcon = GameObject.FindGameObjectWithTag("Ad").GetComponent<AdController>();
-        if(adcon.bannerView == null)
-        {
-            adcon.RequestBanner();
-        }
+        /*adcon = GameObject.FindGameObjectWithTag("Ad").GetComponent<AdController>();
+         if(adcon.bannerView == null)
+         {
+             adcon.RequestBanner();
+         }
 
-        adcon.ShowBanner();
+         adcon.ShowBanner();*/
     }
 
 
@@ -59,8 +59,8 @@ public class HomeScreen : MonoBehaviour
 
     public void DestoryAdHome()
     {
-        adcon.DestroyBanner();
-        adcon.RequestBannerBottom();
+      //  adcon.DestroyBanner();
+      //  adcon.RequestBannerBottom();
     }
 
     public void QuitGame()

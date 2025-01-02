@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+    // Include Unity library module as a dependency
+    implementation project(':unityLibrary')
+}
+
+android {
+    // Path to the NDK
+    ndkPath "**NDKPATH**"
+
+    // Android SDK and Build Tools configurations
+    compileSdkVersion **APIVERSION**
+    buildToolsVersion '**BUILDTOOLS**'
+
+    compileOptions {
+        // Specify Java compatibility versions
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    defaultConfig {
+        // Specify minimum and target SDK versions
+        minSdkVersion **MINSDKVERSION**
+        targetSdkVersion **TARGETSDKVERSION**
+        
+        // Application ID and ABI filters
+        applicationId '**APPLICATIONID**'
+        ndk {
+            abiFilters **ABIFILTERS**
+        }
+        
+        // Versioning
+        versionCode **VERSIONCODE**
+        versionName '**VERSIONNAME**'
+    }
+
+    aaptOptions {
+        // Compression and ignored assets options
+        noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(', ')
+        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+
+    lintOptions {
+        // Continue building even if there are lint errors
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            // Debug-specific build configurations
+            minifyEnabled **MINIFY_DEBUG**
+            proguardFiles getDefaultProguardFile('proguard-android.txt')**SIGNCONFIG**
+            jniDebuggable true
+        }
+        release {
+            // Release-specific build configurations
+            minifyEnabled **MINIFY_RELEASE**
+            proguardFiles getDefaultProguardFile('proguard-android.txt')**SIGNCONFIG**
+        }
+    }
+
+    // Packaging options
+    **PACKAGING_OPTIONS**
+
+    // Play Asset Delivery configuration (if applicable)
+    **PLAY_ASSET_PACKS**
+
+    // Splits configuration for APK splitting
+    **SPLITS**
+    **BUILT_APK_LOCATION**
+
+    bundle {
+        // Configure bundle splitting
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = false
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+}
+
+// Additional splits version code if required
+**SPLITS_VERSION_CODE**
+
+// Launcher source build setup (if necessary)
+**LAUNCHER_SOURCE_BUILD_SETUP**

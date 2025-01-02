@@ -13,10 +13,10 @@ public class CanvasButtons : MonoBehaviour
     public GameObject ThankingScreen;
     public Text payOrnNotEnough;
     public GameObject GameOverScreen;
-    public AdController adcon;
+    //public AdController adcon;
     private void Awake()
     {
-        adcon = GameObject.FindGameObjectWithTag("Ad").GetComponent<AdController>();
+        //adcon = GameObject.FindGameObjectWithTag("Ad").GetComponent<AdController>();
     }
     void Start()
     { 
@@ -35,11 +35,11 @@ public class CanvasButtons : MonoBehaviour
     }
     public void pauseGame()
     {
-        if (adcon.bannerView == null)
+        /*if (adcon.bannerView == null)
         {
             adcon.RequestBanner();
         }
-        adcon.ShowBanner();
+        adcon.ShowBanner();*/
         Time.timeScale = 0;
         pauseGameScreen.SetActive(true);
         
@@ -48,10 +48,10 @@ public class CanvasButtons : MonoBehaviour
 
     public void unpauseGame()
     {
-        if (adcon.bannerView != null)
+        /*if (adcon.bannerView != null)
         {
             adcon.HideBanner();
-        }
+        }*/
         Time.timeScale = 1;
         pauseGameScreen.SetActive(false);
     }
@@ -88,7 +88,7 @@ public class CanvasButtons : MonoBehaviour
     }
     public void Removee()
     {
-        adcon.ShowVideoBasedRewarded();
+        //adcon.ShowVideoBasedRewarded();
         Time.timeScale = 0;
     }
 

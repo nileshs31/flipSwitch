@@ -11,13 +11,13 @@ public class OptionScreen : MonoBehaviour
     public GameObject Credits;
     public GameObject cheatOnText;
     public GameObject cheatOffText;
-    AdController adcon;
+    //AdController adcon;
 
     private void Awake()
     {
-        adcon = GameObject.FindGameObjectWithTag("Ad").GetComponent<AdController>();
+        //adcon = GameObject.FindGameObjectWithTag("Ad").GetComponent<AdController>();
 
-        adcon.ShowBanner();
+        //adcon.ShowBanner();
     }
 
     void Start()
@@ -99,10 +99,10 @@ public class OptionScreen : MonoBehaviour
     public void HideAdOptions()
     {
         //hiding and postioning on mid not destroying
-        adcon.HideBanner();
+        //adcon.HideBanner();
     }
     public void ShowAdOptions()
     {
-        adcon.ShowBanner();
+       // adcon.ShowBanner();
     }
 }
